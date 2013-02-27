@@ -56,6 +56,7 @@ module Sunspot #:nodoc:
           @hostname   = solr_url.host if solr_url
           @hostname ||= user_configuration_from_key('solr', 'hostname')
           @hostname ||= default_hostname
+          @hostname = @hostname.sample if @hostname.is_a?(Array)
         end
         @hostname
       end
